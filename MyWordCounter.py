@@ -1,3 +1,4 @@
+#alex ortega
 import re
 import sys
 
@@ -10,10 +11,9 @@ class MyWordCounter():
     def __init__(self):
         self.inputFile  = sys.argv[1]
         self.outputFile = sys.argv[2]
-        print(self.inputFile)
-        print(self.outputFile)
+        self._readWords()
 
-    def printWords(self):
+    def _readWords(self):
         #each line will be formatted and stored into the dictionary
         file = open(self.inputFile, "r")
         for line in file:
@@ -30,6 +30,18 @@ class MyWordCounter():
                     self.wordCounter[word] += 1
                 else:
                     self.wordCounter[word] = 1
+        self._writeWords()
+
+    def _writeWords(self):
+        #will create file and write count and words from dictionary
+        output = open(self.outputFile, "w")
+        output.write("Count:\tWord:\n")
+        for x in sorted(self.wordCounter):
+            wordString = str(self.wordCounter[x])+":\t "+str(x)
+            #write word in the output file
+            output.write(wordString)
+            output.write("\n")
+        output.close()
+        print("Done. Output file is in your directory. Thank you. ")
 
 tester = MyWordCounter()
-tester.printWords()
