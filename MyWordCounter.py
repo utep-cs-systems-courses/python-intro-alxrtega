@@ -19,7 +19,7 @@ class MyWordCounter():
         for line in file:
             line = line.strip()
             line = line.lower()
-            wordsInLine = line.split(" ")
+            wordsInLine = line.split()
 
             for word in wordsInLine:
                 #strip all non-alpha characters from the word
