@@ -10,7 +10,6 @@ class MyWordCounter():
     outputFile  = ""
 
     def __init__(self):
-
         if len(sys.argv) != 3:
             print("***Correct usage: python MyWordCounter.py <input text file> <output file>***")
             exit()
@@ -36,7 +35,7 @@ class MyWordCounter():
                 #strip all non-alpha characters from the word
                 word = re.sub('[^A-Za-z0-9]+', '', word)
 
-                #check if word is in dictionary, if not then add it
+                #checking if word is in dictionary, if not then add it
                 if word in self.wordCounter:
                     self.wordCounter[word] += 1
                 else:
@@ -44,15 +43,14 @@ class MyWordCounter():
         self._writeWords()
 
     def _writeWords(self):
-        #will create file and write count and words from dictionary
+        #will create file and write count and sorted words from dictionary
         output = open(self.outputFile, "w")
         output.write("Count:\tWord:\n")
         for x in sorted(self.wordCounter):
             wordString = str(self.wordCounter[x])+":\t "+str(x)
-            #write word in the output file
             output.write(wordString)
             output.write("\n")
         output.close()
-        print("Done. Output file is in your directory. Thank you. ")
+        print("Done. Output file is in your directory. Thank you.\n")
 
 tester = MyWordCounter()
