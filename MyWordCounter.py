@@ -16,7 +16,7 @@ class MyWordCounter():
         self.outputFile = sys.argv[2]
 
         if not self.outputFile.endswith('.txt'):
-            print("***Output file %s should be a .doc or a .txt file.***" % self.outputFile)
+            print("***Output file %s should be a .txt file.***" % self.outputFile)
             exit()
 
         if not os.path.exists(self.inputFile):
