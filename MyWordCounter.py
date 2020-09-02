@@ -1,7 +1,5 @@
 #alex ortega
-import re
-import sys
-import os
+import re, sys, os
 
 class MyWordCounter():
 
@@ -11,11 +9,15 @@ class MyWordCounter():
 
     def __init__(self):
         if len(sys.argv) != 3:
-            print("***Correct usage: python MyWordCounter.py <input text file> <output file>***")
+            print("***Correct usage: python MyWordCounter.py <input text file> <output text file>***")
             exit()
 
         self.inputFile  = sys.argv[1]
         self.outputFile = sys.argv[2]
+
+        if not self.outputFile.endswith('.txt'):
+            print("***Output file %s should be a .doc or a .txt file.***" % self.outputFile)
+            exit()
 
         if not os.path.exists(self.inputFile):
             print ("***Input file %s doesn't exist.***" % self.inputFile)
