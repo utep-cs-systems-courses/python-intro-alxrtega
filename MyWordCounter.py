@@ -1,6 +1,7 @@
 #alex ortega
 import re
 import sys
+import os
 
 class MyWordCounter():
 
@@ -9,8 +10,18 @@ class MyWordCounter():
     outputFile  = ""
 
     def __init__(self):
+
+        if len(sys.argv) != 3:
+            print("***Correct usage: python MyWordCounter.py <input text file> <output file>***")
+            exit()
+
         self.inputFile  = sys.argv[1]
         self.outputFile = sys.argv[2]
+
+        if not os.path.exists(self.inputFile):
+            print ("***Input file %s doesn't exist.***" % self.inputFile)
+            exit()
+
         self._readWords()
 
     def _readWords(self):
